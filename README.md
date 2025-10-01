@@ -11,11 +11,13 @@ I'm building this project to:
 
 
 ## ✨ Features  
-- Create, edit, and archive habits  
+- Create, edit, and delete habits
+- Customize character with Coins earned by XP
 - Daily check-ins with automatic streak calculation  
 - Reward badges at milestone streaks  
 - Confetti celebrations 🎉  
-- Dark mode ready 🌙  
+- Background themes  🌙
+- Music integration
 
 ## 🛠️ Built With  
 - [Laravel](https://laravel.com/) – backend framework  
@@ -26,7 +28,7 @@ I'm building this project to:
 ## 📌 Roadmap  
 - [ ] Set up Laravel with Breeze auth  
 - [ ] Migrations: `habits`, `habit_entries`  
-- [ ] Habit CRUD (add, edit, archive)  
+- [ ] Habit CRUD (add, edit, delete)  
 - [ ] Livewire check-in button (toggle today)  
 - [ ] Simple streak counter on dashboard  
 - [ ] Basic Tailwind styling + dark mode toggle  
