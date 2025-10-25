@@ -9,7 +9,7 @@
         class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl"
     >
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="twinkle absolute inset-0 bg-[radial-gradient(white,transparent_70%)] opacity-40"></div></div>
+    <div class="min-h-screen bg-gradient-to-br from-fuchsia-700 via-purple-700 to-pink-500 animate-gradient bg-200%"></div></div>
 
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <div class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
