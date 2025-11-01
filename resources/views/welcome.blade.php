@@ -38,7 +38,7 @@
                     x-transition:leave-end="opacity-0"
                     class="space-y-6"
                     >
-                        <h1 class="text-4xl font-bold text-white">Habit Tracker</h1>
+                        <h1 class="font-press text-purple-400 text-3xl">Habit Tracker</h1>
 
                     <! -- Start Button -->
                         <button

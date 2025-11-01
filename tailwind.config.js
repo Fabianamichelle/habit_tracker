@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        press: ['"Press Start 2P"', 'system-ui'],
+      },
       keyframes: {
         gradient: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
@@ -30,3 +33,4 @@ export default {
   },
   plugins: [],
 }
+
