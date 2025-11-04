@@ -78,6 +78,28 @@ select:focus[data-flux-control] {
   animation: twinkle 3.5s ease-in-out infinite alternate;
 }
 
+/* Force Flux to respect custom colors */
+button[class*='bg-ut-orange'] {
+  background-color: #ff8600 !important;
+}
+button[class*='hover:bg-ut-orange'] {
+  --tw-bg-opacity: 1 !important;
+  background-color: #ff8600 !important;
+}   
+
+
+.shadow-glow {
+  box-shadow: 0 0 12px rgba(255,134,0,0.5);
+}
+.bg-ut-orange\/60 {
+  background-color: rgba(255, 134, 0, 0.6);
+}
+.hover\:bg-ut-orange\/80:hover {
+  background-color: rgba(255, 134, 0, 0.8);
+}
+.border-cornflower-blue\/40 {
+  border-color: rgba(100, 149, 237, 0.4);
+}       
 
 
 

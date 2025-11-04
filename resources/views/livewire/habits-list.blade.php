@@ -26,26 +26,52 @@
 
     <!-- Habit List -->
     <div class="space-y-4">
-        @forelse ($habits as $habit)
-            <div class="p-4 bg-zinc-800 border border-zinc-700 rounded-xl text-white">
-                <h2 class="text-lg font-semibold">{{ $habit->name }}</h2>
-                <p class="text-sm text-gray-400">{{ $habit->description ?? 'No description' }}</p>
-                <p class="text-xs text-gray-500 mt-1">Logged for: {{ $habit->logged_for }}</p>
-            <div class="flex justify-between items-center mt-2">
-                <p class="text-xs {{ $habit->completed ? 'text-green-400' : 'text-red-400' }}">
-                    {{ $habit->completed ? 'Completed' : 'Pending' }}
-                </p>
+       @forelse ($habits as $habit)
+    <div class="p-4 bg-zinc-800 border border-zinc-700 rounded-xl text-white">
+        @if ($editingHabitId === $habit->id)
+            <!-- Edit Form -->
+            <input 
+                wire:model="editName" 
+                type="text" 
+                class="w-full mb-2 px-3 py-2 rounded bg-zinc-900 border border-zinc-700"
+                placeholder="Habit name"
+            >
+            <textarea 
+                wire:model="editDescription" 
+                rows="2" 
+                class="w-full mb-2 px-3 py-2 rounded bg-zinc-900 border border-zinc-700"
+                placeholder="Description">
+            </textarea>
+
+            <div class="flex gap-2">
+                <button wire:click="updateHabit" class="bg-purple-300 hover:bg-purple-700 text-white px-3 py-1 rounded">Save</button>
+                <button wire:click="$set('editingHabitId', null)" class="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded">Cancel</button>
             </div>
-                <button 
-                    wire:click="toggleComplete({{ $habit->id }})"
-                    class="text-xs px-3 py-1 rounded-md border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white transition"
-                >
+        @else
+            <!-- Normal View -->
+            <div class="bg-persian-indigo/60 hover:bg-persian-indigo/80 border border-cornflower-blue/40 
+            rounded-xl p-4 shadow-glow transition-all duration-300">
+            <h2 class="text-lg font-semibold">{{ $habit->name }}</h2>
+            <p class="text-sm text-gray-400">{{ $habit->description ?? 'No description' }}</p>
+
+            <div class="flex gap-2 mt-2">
+                <button wire:click="toggleComplete({{ $habit->id }})" class="text-xs px-3 py-1 rounded-md border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white transition">
                     {{ $habit->completed ? 'Undo' : 'Mark Complete' }}
                 </button>
+                <button wire:click="editHabit({{ $habit->id }})" class="text-xs px-3 py-1 rounded-md border border-purple-400 text-purple-300 hover:bg-purple-600 hover:text-white transition">
+                    Edit
+                </button>
+                <button wire:click="deleteHabit({{ $habit->id }})" class="text-xs px-3 py-1 rounded-md border border-purple-300 text-purple-300 hover:bg-purple-600 hover:text-white transition">
+                    Delete
+                </button>
             </div>
-        @empty
-            <p class="text-gray-400">No habits found.</p>
-        @endforelse
+            </div>
+        @endif
+    </div>
+@empty
+    <p class="text-gray-400">No habits found.</p>
+@endforelse
+
     </div>
 </div>
 

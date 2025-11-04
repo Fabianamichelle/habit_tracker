@@ -1,36 +1,31 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./resources/**/*.php",
+  ],
+  safelist: [
+    'bg-ut-orange',
+    'text-anti-flash-white',
+    'bg-persian-indigo',
+    'text-periwinkle',
+    'hover:bg-cornflower-blue',
+    'shadow-glow'
   ],
   theme: {
     extend: {
-      fontFamily: {
-        press: ['"Press Start 2P"', 'system-ui'],
-      },
-      keyframes: {
-        gradient: {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-        },
-      },
-      animation: {
-        gradient: 'gradient 15s ease infinite',
-      },
-      backgroundSize: {
-        '200%': '200% 200%',
-      },
       colors: {
-        magenta: '#ff80bf',
-        orchid: '#c77dff',
-        plum: '#9d4edd',
-        amethyst: '#7b2cbf',
-        lilac: '#b892ff',
+        'persian-indigo': '#27187e',
+        'cornflower-blue': '#758bfd',
+        'periwinkle': '#aeb8fe',
+        'anti-flash-white': '#f1f2f6',
+        'ut-orange': '#ff8600',
+      },
+      boxShadow: {
+        glow: '0 0 10px rgba(117,139,253,0.6)',
       },
     },
   },
   plugins: [],
 }
-

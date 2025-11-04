@@ -25,4 +25,14 @@ class Habit extends Model
         'completed' => 'boolean',
         'logged_for' => 'datetime',
     ];
+
+    /**
+     * Get the user that owns the habit.
+     */
+    public function user()  
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }
