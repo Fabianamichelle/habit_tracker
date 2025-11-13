@@ -71,4 +71,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Habit::class);        
     }
+
+    /**
+     * User rewards relationship
+     */
+    public function rewards()
+    {
+        return $this->belongsToMany(Reward::class, 'user_rewards')->withTimestamps()
+        ->withPivot('purchased_at');
+    }
 }

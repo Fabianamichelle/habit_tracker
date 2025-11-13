@@ -111,7 +111,7 @@
 
         <!-- Shop tab content -->
         <div x-show="tab === 'shop'" x-transition>
-        <p class="text-center text-periwinkle text-sm">Unlock themes and badges coming soon 🛍️</p>
+            <livewire:shop />
         </div>
     </div>
 </div>
