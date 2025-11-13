@@ -23,16 +23,33 @@
 
         <! Streak Section -->
         @auth
-        <div
-            class="flex justify-center gap-6 text-xs font-press tracking-widest mt-2">
-            <span class="text-ut-orange">🔥 Streak: {{ auth()->user()->current_streak ?? 0 }}</span>
-            <span class="text-cornflower-blue">⭐ XP: {{ auth()->user()->xp_points ?? 0 }}</span>
-            <span class="text-periwinkle">💰 Coins: {{ auth()->user()->coins ?? 0 }}</span>
-        </div>
+        <livewire:stats-header />
         @endauth
 
+        <!-- XP Milestone Popup -->
+        <div 
+            x-data="{ showXpPopup: false }"
+            @xp-milestone.window="showXpPopup = true; setTimeout(() => showXpPopup = false, 4000)"
+            x-show="showXpPopup"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="absolute top-24 right-4 bg-zinc-900/90 backdrop-blur-md border-2 border-ut-orange rounded-lg px-4 py-3 text-sm text-anti-flash-white font-press shadow-glow z-50"
+            style="display: none;"
+        >
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">🎉</span>
+                <div>
+                    <p class="font-bold text-ut-orange text-xs">5-Day Streak Milestone!</p>
+                    <p class="text-xs text-periwinkle">+50 XP & +20 Coins earned! 🚀</p>
+                </div>
+            </div>
+        </div>
+                <!-- Top section -->
 
-        <!-- Top section -->
         <div class="text-center text-anti_flash_white space-y-3 font-press">
             <h1 class="text-lg text-ut_orange tracking-widest drop-shadow-md">Habit Tracker ✨</h1>
             <p class="text-xs text-periwinkle font-sans">

@@ -23,6 +23,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'current_streak',
+        'last_streak_date',
+        'xp',
+        'coins',    
     ];
 
     /**

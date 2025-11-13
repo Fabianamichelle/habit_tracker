@@ -57,14 +57,46 @@ class HabitsList extends Component
                 }
 
                 $user->last_streak_date = now();
+
+                // Award XP and Coins
+                if ($user->current_streak % 5 === 0) {
+                    // Every 5-day streak
+                    $user->xp += 50;
+                    $user->coins += 20;
+                } else {
+                    // Regular completion
+                    $user->xp += 10;
+                    $user->coins += 5;
+            }
+                //milestone popup 
+            if ($isMilestone)
+              $this->dispatch('xp-milestone')->self();
+
+
                 $user->save();
             }
+
+            // if habit is uncomepleted, do not update streak or award xp/coins take away points 
+            if (! $habit->completed && auth()->check()) {
+                $user = auth()->user();
+                // Decrease XP and Coins for uncompleting
+                $user->xp = max(0, $user->xp - 15); // prevent negative XP
+                $user->coins = max(0, $user->coins - 8); // prevent negative Coins
+                $user->save();
+            }
+
+            // Force Livewire to refresh the stats display
+            $this->dispatch('stats-updated')->self();
 
             // Refresh habits for UI
             $this->habits = Habit::where('user_id', auth()->id())
                 ->latest('logged_for')
                 ->get();
         }
+
+   
+
+        
     }
 
     // add an editHabit method 
