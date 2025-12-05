@@ -69,8 +69,9 @@ class HabitsList extends Component
                     $user->coins += 5;
             }
                 //milestone popup 
-            if ($isMilestone)
-              $this->dispatch('xp-milestone')->self();
+                $isMilestone = ($user->xp % 100 === 0);
+                if ($isMilestone)
+                    $this->dispatch('xp-milestone')->self();
 
 
                 $user->save();
