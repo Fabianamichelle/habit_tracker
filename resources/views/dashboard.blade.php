@@ -1,4 +1,4 @@
-<x-layouts.app :title="__('Dashboard')">
+<x-layouts.app :title="__('Habit Dashboard')">
     <div 
         x-data="{ visible: false, tab: 'habits' }"
         x-init="setTimeout(() => visible = true, 100)"
